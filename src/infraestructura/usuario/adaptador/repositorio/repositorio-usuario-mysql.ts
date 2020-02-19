@@ -1,16 +1,26 @@
 import { RepositorioUsuario } from "src/dominio/usuario/puerto/repositorio/repositorio-usuario";
 import { Usuario } from "src/dominio/usuario/modelo/usuario";
+import { InjectRepository } from "@nestjs/typeorm";
+import { UsuarioEntidad } from "./usuario.entidad";
+import { Repository } from "typeorm";
 
 export class RepositorioUsuarioMysql implements RepositorioUsuario {
 
-    usuarios = new Array<Usuario>();;
+    constructor(
+        @InjectRepository(UsuarioEntidad) private readonly repositorio: Repository<UsuarioEntidad>,
+    ) { }
+
 
     async existeNombreUsuario(nombre: string): Promise<boolean> {
-        return this.usuarios.filter((usuario) => usuario.nombre == nombre).length > 0;
-    } 
-    
+        return await this.repositorio.count({ nombre: nombre }) > 0;
+    }
+
     async guardar(usuario: Usuario) {
-        this.usuarios.push(usuario);
+        let entidad = new UsuarioEntidad();
+        entidad.clave = usuario.clave;
+        entidad.fechaCreacion = usuario.fechaCreacion;
+        entidad.nombre = usuario.nombre;
+        await this.repositorio.save(entidad);
     }
 
 
