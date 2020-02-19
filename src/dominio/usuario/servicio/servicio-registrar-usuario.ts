@@ -13,7 +13,7 @@ export class ServicioRegistrarUsuario {
 
     async ejecutar(usuario: Usuario) {
         if(await this._repositorioUsuario.existeNombreUsuario(usuario.nombre)){
-            throw new Error("El nombre de usuario juan ya existe");
+            throw new Error(`El nombre de usuario ${usuario.nombre} ya existe`);
         }
         await this._repositorioUsuario.guardar(usuario);
     }

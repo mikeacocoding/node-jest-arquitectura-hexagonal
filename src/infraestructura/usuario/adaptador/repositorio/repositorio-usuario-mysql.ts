@@ -1,7 +1,7 @@
 import { RepositorioUsuario } from "src/dominio/usuario/puerto/repositorio/repositorio-usuario";
 import { Usuario } from "src/dominio/usuario/modelo/usuario";
 import { InjectRepository } from "@nestjs/typeorm";
-import { UsuarioEntidad } from "./usuario.entidad";
+import { UsuarioEntidad } from "../../entidad/usuario.entidad";
 import { Repository } from "typeorm";
 
 export class RepositorioUsuarioMysql implements RepositorioUsuario {

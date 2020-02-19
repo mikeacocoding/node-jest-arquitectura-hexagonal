@@ -1,14 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
-import { ServicioRegistrarUsuario } from 'src/dominio/usuario/servicio/servicio-registrar-usuario';
-import { Usuario } from 'src/dominio/usuario/modelo/usuario';
+import { Controller, Post, Body } from '@nestjs/common';
+import { ComandoRegistrarUsuario } from 'src/aplicacion/usuario/comando/comando-registrar-usuario';
+import { ManejarRegistrarUsuario } from 'src/aplicacion/usuario/comando/manejador-registar-usuario';
 
 @Controller("usuarios")
 export class UsuarioControlador {
-  constructor(private readonly servicioRegistrarUsuario: ServicioRegistrarUsuario) { }
+  constructor(private readonly _manejadorRegistrarUsuario: ManejarRegistrarUsuario) { }
 
-  @Get()
-  async getHello(): Promise<string> {
-    await this.servicioRegistrarUsuario.ejecutar(new Usuario("juan", "12341", new Date()));
-    return "Ok";
+  @Post()
+  async crearUsuario(@Body() comandoRegistrarUsuario: ComandoRegistrarUsuario) {
+    await this._manejadorRegistrarUsuario.ejecutar(comandoRegistrarUsuario);
   }
 }

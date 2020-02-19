@@ -3,9 +3,10 @@ import { Module } from '@nestjs/common';
 import { ServicioRegistrarUsuario } from 'src/dominio/usuario/servicio/servicio-registrar-usuario';
 import { RepositorioUsuario } from 'src/dominio/usuario/puerto/repositorio/repositorio-usuario';
 import { RepositorioUsuarioMysql } from './adaptador/repositorio/repositorio-usuario-mysql';
-import { UsuarioEntidad } from './adaptador/repositorio/usuario.entidad';
+import { UsuarioEntidad } from './entidad/usuario.entidad';
 import { UsuarioControlador } from './controlador/usuario.controlador';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ManejarRegistrarUsuario } from 'src/aplicacion/usuario/comando/manejador-registar-usuario';
 
 const repositorioUsuarioProvider = {
   provide: RepositorioUsuario,
@@ -16,7 +17,8 @@ const repositorioUsuarioProvider = {
   providers:
     [
       ServicioRegistrarUsuario,
-      repositorioUsuarioProvider
+      repositorioUsuarioProvider,
+      ManejarRegistrarUsuario
     ],
   controllers: [UsuarioControlador]
 

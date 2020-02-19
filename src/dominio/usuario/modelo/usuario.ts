@@ -10,12 +10,16 @@ export class Usuario {
 
     constructor(nombre: string, clave: string, fechaCreacion: Date) {
 
-        if (clave.length < NUMERO_MINIMO_CARACTERES_CLAVE) {
-            throw new ErrorLongitudInvalida(`El tamaño mínimo de la clave debe ser ${NUMERO_MINIMO_CARACTERES_CLAVE}`);
-        }
+        this.validarTamanoClave(clave);
         this._nombre = nombre;
         this._clave = clave;
         this._fechaCreacion = fechaCreacion;
+    }
+
+    private validarTamanoClave(clave: string) {
+        if (clave.length < NUMERO_MINIMO_CARACTERES_CLAVE) {
+            throw new ErrorLongitudInvalida(`El tamaño mínimo de la clave debe ser ${NUMERO_MINIMO_CARACTERES_CLAVE}`);
+        }
     }
 
     get nombre(): string {
