@@ -1,6 +1,7 @@
 import { RepositorioUsuario } from "../puerto/repositorio/repositorio-usuario";
 import { Usuario } from "../modelo/usuario";
 import { Injectable } from "@nestjs/common";
+import { ErrorDeNegocio } from "src/dominio/excepciones/error-de-negocio";
 
 @Injectable()
 export class ServicioRegistrarUsuario {
@@ -13,7 +14,7 @@ export class ServicioRegistrarUsuario {
 
     async ejecutar(usuario: Usuario) {
         if(await this._repositorioUsuario.existeNombreUsuario(usuario.nombre)){
-            throw new Error(`El nombre de usuario ${usuario.nombre} ya existe`);
+            throw new ErrorDeNegocio(`El nombre de usuario ${usuario.nombre} ya existe`);
         }
         await this._repositorioUsuario.guardar(usuario);
     }
