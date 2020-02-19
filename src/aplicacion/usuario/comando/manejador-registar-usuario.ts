@@ -4,7 +4,7 @@ import { ComandoRegistrarUsuario } from "./comando-registrar-usuario";
 import { Usuario } from "src/dominio/usuario/modelo/usuario";
 
 @Injectable()
-export class ManejarRegistrarUsuario {
+export class ManejadorRegistrarUsuario {
 
     constructor(private _servicioRegistrarUsuario: ServicioRegistrarUsuario) { }
 

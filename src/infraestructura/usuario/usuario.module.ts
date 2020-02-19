@@ -6,7 +6,7 @@ import { RepositorioUsuarioMysql } from './adaptador/repositorio/repositorio-usu
 import { UsuarioEntidad } from './entidad/usuario.entidad';
 import { UsuarioControlador } from './controlador/usuario.controlador';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ManejarRegistrarUsuario } from 'src/aplicacion/usuario/comando/manejador-registar-usuario';
+import { ManejadorRegistrarUsuario } from 'src/aplicacion/usuario/comando/manejador-registar-usuario';
 
 const repositorioUsuarioProvider = {
   provide: RepositorioUsuario,
@@ -18,7 +18,7 @@ const repositorioUsuarioProvider = {
     [
       ServicioRegistrarUsuario,
       repositorioUsuarioProvider,
-      ManejarRegistrarUsuario
+      ManejadorRegistrarUsuario
     ],
   controllers: [UsuarioControlador]
 
