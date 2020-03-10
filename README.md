@@ -28,6 +28,7 @@ Para mayor documentación del patrón [https://martinfowler.com/bliki/CQRS.html]
 - Ejemplo de pruebas automatizadas con Jmeter
 - Contiene los plugin de lint y prettier, se recomienda ejecutarlos antes de subir código al repositorio o agregarlos como un hook. 
 - Contiene la configuración para jenkins y sonar con análisis de cobertura y deuda técnica.
+- Soporte para swagger, para verificarlo se debe ingresar a la url http://localhost:3000/api/
 
 
 
