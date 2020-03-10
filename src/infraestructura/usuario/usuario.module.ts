@@ -10,17 +10,15 @@ import { ManejadorRegistrarUsuario } from 'src/aplicacion/usuario/comando/maneja
 
 const repositorioUsuarioProvider = {
   provide: RepositorioUsuario,
-  useClass: RepositorioUsuarioMysql
+  useClass: RepositorioUsuarioMysql,
 };
 @Module({
   imports: [TypeOrmModule.forFeature([UsuarioEntidad])],
-  providers:
-    [
-      ServicioRegistrarUsuario,
-      repositorioUsuarioProvider,
-      ManejadorRegistrarUsuario
-    ],
-  controllers: [UsuarioControlador]
-
+  providers: [
+    ServicioRegistrarUsuario,
+    repositorioUsuarioProvider,
+    ManejadorRegistrarUsuario,
+  ],
+  controllers: [UsuarioControlador],
 })
-export class UsuarioModule { }
+export class UsuarioModule {}

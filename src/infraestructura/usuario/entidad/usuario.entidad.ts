@@ -1,9 +1,7 @@
-
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({name: "usuario"})
+@Entity({ name: 'usuario' })
 export class UsuarioEntidad {
-
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -14,5 +12,5 @@ export class UsuarioEntidad {
   clave: string;
 
   @Column()
-  fechaCreacion:Date;
+  fechaCreacion: Date;
 }
