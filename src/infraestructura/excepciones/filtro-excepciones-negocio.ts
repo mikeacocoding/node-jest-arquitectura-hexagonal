@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { ErrorDeNegocio } from 'src/dominio/excepciones/error-de-negocio';
-import { LogMessage } from './log-message';
+import { Message } from './message';
 
 @Catch(ErrorDeNegocio)
 export class FiltroExcepcionesDeNegocio implements ExceptionFilter {
@@ -18,15 +18,15 @@ export class FiltroExcepcionesDeNegocio implements ExceptionFilter {
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
 
-    const logMessage: LogMessage = {
+    const message: Message = {
       statusCode: HttpStatus.BAD_REQUEST,
       timestamp: new Date().toISOString(),
       path: request.url,
       message: exception.message
     };
 
-    this.logger.log(logMessage);
+    this.logger.log(message);
 
-    response.status(HttpStatus.BAD_REQUEST).json(logMessage);
+    response.status(HttpStatus.BAD_REQUEST).json(message);
   }
 }

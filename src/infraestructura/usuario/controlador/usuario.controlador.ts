@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Get } from '@nestjs/common';
-import { ComandoRegistrarUsuario } from 'src/aplicacion/usuario/comando/comando-registrar-usuario';
-import { ManejadorRegistrarUsuario } from 'src/aplicacion/usuario/comando/manejador-registar-usuario';
-import { ManejadorListarUsuario } from 'src/aplicacion/usuario/consulta/manejador-listar-usuarios';
+import { ComandoRegistrarUsuario } from 'src/aplicacion/usuario/comando/registrar-usuario.comando';
+import { ManejadorRegistrarUsuario } from 'src/aplicacion/usuario/comando/registar-usuario.manejador';
+import { ManejadorListarUsuario } from 'src/aplicacion/usuario/consulta/listar-usuarios.manejador';
 import { UsuarioDTO } from 'src/dominio/usuario/modelo/usuario.dto';
 
 @Controller('usuarios')
