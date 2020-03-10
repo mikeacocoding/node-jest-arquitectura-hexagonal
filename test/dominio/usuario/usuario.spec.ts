@@ -7,7 +7,7 @@ describe('Usuario', () => {
 
   it('usuario con clave igual a 4 debería crear bien', () => {
 
-    let usuario = new Usuario("juan", "4123", new Date());
+    const usuario = new Usuario("juan", "4123", new Date());
 
     expect(usuario.nombre).toEqual("juan");
     expect(usuario.clave).toEqual("4123");

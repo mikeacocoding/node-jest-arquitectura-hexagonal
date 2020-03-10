@@ -4,9 +4,9 @@ import { Usuario } from "src/dominio/usuario/modelo/usuario";
 describe('ServicioRegistrarUsuario', () => {
   it('si el nombre de usuario ya existe no se puede crear y deberia retonar error',async () => {
 
-    let servicioRegistrarUsuario = new ServicioRegistrarUsuario({
-      existeNombreUsuario: jest.fn(async (nombre) => true),
-      guardar: jest.fn(async (nombre) => {})
+    const servicioRegistrarUsuario = new ServicioRegistrarUsuario({
+      existeNombreUsuario: jest.fn(async (nombre) => nombre == "juan"),
+      guardar: jest.fn(async () => ({}))
     });
 
     await expect(servicioRegistrarUsuario.ejecutar(new Usuario("juan", "1234", new Date()))).rejects.toThrow("El nombre de usuario juan ya existe");
@@ -16,9 +16,9 @@ describe('ServicioRegistrarUsuario', () => {
 
   it('si el nombre no existe guarda el usuario el repositorio',async () => {
 
-    var mockExisteNombreUsuario = jest.fn(async (nombre) => false);
-    var mockGuardar = jest.fn(async (nombre) => {});
-    let servicioRegistrarUsuario = new ServicioRegistrarUsuario({
+    const mockExisteNombreUsuario = jest.fn(async () => false);
+    const mockGuardar = jest.fn(async () =>({}));
+    const servicioRegistrarUsuario = new ServicioRegistrarUsuario({
       existeNombreUsuario: mockExisteNombreUsuario,
       guardar: mockGuardar
     });

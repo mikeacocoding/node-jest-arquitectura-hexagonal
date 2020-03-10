@@ -16,7 +16,7 @@ export class RepositorioUsuarioMysql implements RepositorioUsuario {
     }
 
     async guardar(usuario: Usuario) {
-        let entidad = new UsuarioEntidad();
+        const entidad = new UsuarioEntidad();
         entidad.clave = usuario.clave;
         entidad.fechaCreacion = usuario.fechaCreacion;
         entidad.nombre = usuario.nombre;
