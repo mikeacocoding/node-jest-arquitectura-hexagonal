@@ -35,36 +35,23 @@ pipeline{
                     sh 'npm run test:cov'					
 				}
             }
-			// }
-			// stage('Test Unitarios -Cobertura'){
-			// 	parallel {
-			// 		stage('Test- Cobertura backend'){
-			// 			steps {
-			// 				echo '------------>test backend<------------'
-			// 				dir("${PROJECT_PATH_BACK}"){
-			// 					sh 'gradle --stacktrace test'
-								
-			// 				}
-			// 			}
-			// 		}
-			// 	}
-			// }
+
 			
-			// stage('Sonar Analysis'){
-			// 	steps{
-			// 		echo '------------>Analisis de código estático<------------'
-			// 		  withSonarQubeEnv('Sonar') {
-            //             sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dsonar.projectKey={{#nombreProyectoSonar}}{{campo}}{{/nombreProyectoSonar}}.${BRANCH_NAME} -Dsonar.projectName={{#nombreProyectoSonar}}{{campo}}{{/nombreProyectoSonar}}.${BRANCH_NAME} -Dproject.settings=./sonar-project.properties"
-            //          }
-			// 	}
-			// }
+			 stage('Sonar Analysis'){
+			 	steps{
+			 		echo '------------>Analisis de código estático<------------'
+			 		  withSonarQubeEnv('Sonar') {
+                         sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dsonar.projectKey=co.com.cliente:proyecto.nombre.apellido.master -Dsonar.projectName=co.com.cliente:proyecto.nombre.apellido.master -Dproject.settings=./sonar-project.properties"
+                      }
+			 	}
+			 }
 		
 		
 
 		}
 		post {
 			failure {
-				mail(to: '{{#correosEnvioFallo}}{{campo}}{{/correosEnvioFallo}}',
+				mail(to: 'juan.botero@ceiba.com.co',
 				body:"Build failed in Jenkins: Project: ${env.JOB_NAME} Build /n Number: ${env.BUILD_NUMBER} URL de build: ${env.BUILD_NUMBER}/n/nPlease go to ${env.BUILD_URL} and verify the build",
 				subject: "ERROR CI: ${env.JOB_NAME}")
 			}
