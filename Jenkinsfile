@@ -9,20 +9,20 @@ pipeline{
         pollSCM('@hourly')
 		}
 	
-		tools {
+		// tools {
             
-		}
+		// }
 	
 		options {
 			buildDiscarder(logRotator(numToKeepStr: '5'))
 			disableConcurrentBuilds()
 		}
 		
-		environment {
-		}
-		parameters{
+		// environment {
+		// }
+		// parameters{
 
-		}
+		// }
 		
 		stages{
 		
