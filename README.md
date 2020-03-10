@@ -27,6 +27,7 @@ Para mayor documentación del patrón [https://martinfowler.com/bliki/CQRS.html]
 - Uso de  [Jest]( https://docs.nestjs.com/fundamentals/testing#testing) para las pruebas automatizadas
 - Ejemplo de pruebas automatizadas con Jmeter
 - Contiene los plugin de lint y prettier, se recomienda ejecutarlos antes de subir código al repositorio o agregarlos como un hook. 
+- Contiene la configuración para jenkins y sonar con análisis de cobertura y deuda técnica.
 
 
 
