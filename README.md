@@ -2,7 +2,7 @@
 
 El framework base de este bloque es [Nest](https://github.com/nestjs/nest); este nos brinda grandes cualidades, por ejemplo: inyección de dependencias, controladores http, manejo de excepciones, división del código por módulos, integración con diferentes tecnologías de persistencia, etc.
 
-##Los principales patrones y estilos de arquitectura que guían este bloque son
+## Los principales patrones y estilos de arquitectura que guían este bloque son
 
 #### Arquitectura hexagonal
 
@@ -31,6 +31,8 @@ Para mayor documentación del patrón [https://martinfowler.com/bliki/CQRS.html]
 - Uso de [Jest](https://docs.nestjs.com/fundamentals/testing#testing) para las pruebas automatizadas
 - Ejemplo de pruebas automatizadas con Jmeter
 - Contiene los plugin de lint y prettier, se recomienda ejecutarlos antes de subir código al repositorio o agregarlos como un hook.
+- Contiene la configuración para jenkins y sonar con análisis de cobertura y deuda técnica.
+- Soporte para swagger, para verificarlo se debe ingresar a la url http://localhost:3000/api/
 
 #### Uso de migraciones
 
