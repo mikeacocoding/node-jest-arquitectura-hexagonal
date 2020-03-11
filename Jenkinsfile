@@ -26,7 +26,7 @@ pipeline{
 		
 			stage('compilar '){
                 steps {
-					sh 'npm cache verify'
+					sh 'npm run prebuild'
                     sh 'npm i'
                     sh 'npm run build'					
 				}
