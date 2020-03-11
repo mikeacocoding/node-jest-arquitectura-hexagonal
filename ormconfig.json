@@ -1,10 +1,14 @@
 {
-    "type": "mysql",
-    "host": "localhost",
-    "port": 3307,
-    "username": "root",
-    "password": "root",
-    "database": "test",
-    "entities": ["dist/**/*.entidad{.ts,.js}"],
-    "synchronize": true
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "root",
+  "database": "test",
+  "entities": ["dist/**/*.entidad{.ts,.js}"],
+  "migrationsTableName": "migration_history",
+  "migrations": ["dist/infraestructura/migraciones/*.js"],
+  "cli": {
+    "migrationsDir": "src/infraestructura/migraciones"
   }
+}
