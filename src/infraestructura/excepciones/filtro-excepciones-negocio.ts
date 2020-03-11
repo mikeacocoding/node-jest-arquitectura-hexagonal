@@ -11,7 +11,7 @@ import { Message } from './message';
 
 @Catch(ErrorDeNegocio)
 export class FiltroExcepcionesDeNegocio implements ExceptionFilter {
-  constructor(private logger: Logger) { }
+  constructor(private logger: Logger) {}
 
   catch(exception: ErrorDeNegocio, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
@@ -22,7 +22,7 @@ export class FiltroExcepcionesDeNegocio implements ExceptionFilter {
       statusCode: HttpStatus.BAD_REQUEST,
       timestamp: new Date().toISOString(),
       path: request.url,
-      message: exception.message
+      message: exception.message,
     };
 
     this.logger.log(message);
